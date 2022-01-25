@@ -2,6 +2,7 @@
 """import modules"""
 from datetime import datetime
 import json
+import storage
 import uuid
 
 class BaseModel():
@@ -20,6 +21,8 @@ class BaseModel():
                     value = datetime.fromisoformat(value)
                 if key != '__class__':
                     setattr(self, key, value)
+        else:
+            storage.new(self)
 
     def __str__(self):
         """__str__ method to return [<class name>] (<self.id>) <self.__dict__>"""
@@ -28,6 +31,7 @@ class BaseModel():
     def save(self):
         """update the public instance attribute
         updated_at with the current datetime"""
+        storage.save(self)
         self.updated_at = datetime.now()
 
     def to_dict(self):
