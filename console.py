@@ -5,18 +5,40 @@ import json
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor example."""
     prompt = '(hbnb) '
+    class_exi = {'BaseModel', 'User', 'State', 'City',
+                 'Amenity', 'Place', 'Review'}
     def do_create(self, class_name):
         """Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id"""
+
+        if class_name == 'BaseModel':
+            obj = BaseModel()
+        elif class_name == 'User':
+            obj = User()
+        elif class_name == 'State':
+            obj = State()
+        elif class_name == 'City':
+            obj = City()
+        elif class_name == 'Amenity':
+            obj = Amenity()
+        elif class_name == 'Place':
+            obj = Place()
+        elif class_name == 'Review':
+            obj = Review()
+
         if class_name:
-            if class_name != 'BaseModel' and class_name != 'User': 
+            if class_name not in self.class_exi: 
                 print("** class doesn't exist **")
             else:
-                obj = BaseModel()
                 obj.save()
                 print(obj.id)
         else:
@@ -34,19 +56,15 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = arg[0]
             id_n = arg[1]
-            if class_name != 'BaseModel' and class_name != 'User':
+            if class_name not in self.class_exi:
                 print("** class doesn't exist **")
             else:
                 all_objs = storage.all()
-                pint = None
-                for obj_id in all_objs.keys():
-                    obj = all_objs[obj_id]
-                    if id_n == obj.id:
-                        pint = obj
-                        print(pint)
-
-                if pint == None:
-                    print("** no instance found **")
+                key = class_name + "." + id_n
+                if key in all_objs:
+                    print (all_objs[key])
+                else:
+                    ("** no instance found **")
 
     def do_destroy(self, args):
         """Deletes an instance based on the class name
@@ -59,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = arg[0]
             id_n = arg[1]
-            if class_name != 'BaseModel' and class_name != 'User':
+            if class_name not in self.class_exi:
                 print("** class doesn't exist **")
             else:
                 all_objs = storage.all()
@@ -73,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, class_name):
         """Prints all string representation of
         all instances based or not on the class name"""
-        if class_name != "" and class_name != 'BaseModel' and class_name != 'User':
+        if class_name != "" and class_name not in self.class_exi:
             print("** class doesn't exist **")
         else:
             all_objs = storage.all()
@@ -101,11 +119,10 @@ class HBNBCommand(cmd.Cmd):
             id_n = arg[1]
             attr = arg[2]
             value = arg[3]
-            if (class_name != 'BaseModel' and class_name != 'User'):
+            if (class_name not in self.class_exi):
                 print("** class doesn't exist **")
             else:
                 all_objs = storage.all()
-                pint = None
                 key = class_name + "." + id_n
                 if key in all_objs:
                     setattr(all_objs[key], attr, value)
