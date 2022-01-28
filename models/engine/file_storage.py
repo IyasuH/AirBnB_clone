@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """import modules"""
 import json
+from models.user import User
 from models.base_model import BaseModel
 import os.path
 

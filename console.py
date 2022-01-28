@@ -4,6 +4,7 @@ import cmd
 import json
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor example."""
@@ -12,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id"""
         if class_name:
-            if class_name != 'BaseModel':
+            if class_name != 'BaseModel' and class_name != 'User': 
                 print("** class doesn't exist **")
             else:
                 obj = BaseModel()
@@ -33,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = arg[0]
             id_n = arg[1]
-            if class_name != 'BaseModel':
+            if class_name != 'BaseModel' and class_name != 'User':
                 print("** class doesn't exist **")
             else:
                 all_objs = storage.all()
@@ -58,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = arg[0]
             id_n = arg[1]
-            if class_name != 'BaseModel':
+            if class_name != 'BaseModel' and class_name != 'User':
                 print("** class doesn't exist **")
             else:
                 all_objs = storage.all()
@@ -72,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, class_name):
         """Prints all string representation of
         all instances based or not on the class name"""
-        if class_name != "" and class_name != 'BaseModel':
+        if class_name != "" and class_name != 'BaseModel' and class_name != 'User':
             print("** class doesn't exist **")
         else:
             all_objs = storage.all()
@@ -100,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
             id_n = arg[1]
             attr = arg[2]
             value = arg[3]
-            if (class_name != 'BaseModel'):
+            if (class_name != 'BaseModel' and class_name != 'User'):
                 print("** class doesn't exist **")
             else:
                 all_objs = storage.all()
