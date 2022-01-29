@@ -35,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         elif class_name == 'Review':
             obj = Review()
 
-        if class_name:
+        if len(class_name) != 0 and class_name != "":
             if class_name not in self.class_exi: 
                 print("** class doesn't exist **")
             else:
@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of
         an instance based on the class name and id"""
         arg = args.split()
-        if len(arg) == 0:
+        if len(arg) == 0 or arg[0] == "":
             print("** class name missing **")
         elif len(arg) == 1:
             print("** instance id missing **")
@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name
         and id (save the change into the JSON file)"""
         arg = args.split()
-        if len(arg) == 0:
+        if len(arg) == 0 or arg[0] == "":
             print("** class name missing **")
         elif len(arg) == 1:
             print("** instance id missing **")
@@ -106,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
         by adding or updating attribute
         (save the change into the JSON file)"""
         arg = args.split()
-        if len(arg) == 0:
+        if len(arg) == 0 or arg[0] == "":
             print("** class name missing **")
         elif len(arg) == 1:
             print("** instance id missing **")
