@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """import modules"""
 from datetime import datetime
-import json
 import models
 import uuid
 """Base Model"""
@@ -43,9 +42,9 @@ class BaseModel():
     def to_dict(self):
         """Returns a dictionary containing all
         keys/values of __dict__ of the instance"""
-        dict_copy = dict(self.__dict__)
-        dict_copy['id'] = self.id
+        dict_copy = {}
         dict_copy['__class__'] = self.__class__.__name__
-        dict_copy['updated_at'] = self.updated_at.isoformat()
-        dict_copy['created_at'] = self.created_at.isoformat()
-        return (dict_copy)
+        dict_copy.update(self.__dict__)
+        dict_copy.update({'created_at': dict_copy['created_at'].isoformat()})
+        dict_copy.update({'updated_at': dict_copy['updated_at'].isoformat()})
+        return dict_copy
