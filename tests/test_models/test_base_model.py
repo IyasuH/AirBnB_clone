@@ -11,6 +11,8 @@ Test case for BaseModel
 
 
 class TestBase(unittest.TestCase):
+    """Tests for class BaseModel"""
+
     def test_id(self):
         """Test id is str"""
         my_model = BaseModel()
@@ -49,6 +51,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(created_type, datetime)
         updated_type = type(my_new_model.updated_at)
         self.assertEqual(updated_type, datetime)
+
 
 if __name__ == '__main__':
     unittest.main()
