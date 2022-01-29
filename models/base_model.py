@@ -15,8 +15,10 @@ class BaseModel():
             for key, value in kwargs.items():
                 if key == 'updated_at':
                     value = datetime.fromisoformat(value)
+                    setattr(self, key, value)
                 if key == 'created_at':
                     value = datetime.fromisoformat(value)
+                    setattr(self, key, value)
                 if key != '__class__':
                     setattr(self, key, value)
         else:
@@ -35,7 +37,6 @@ class BaseModel():
         """update the public instance attribute
         updated_at with the current datetime"""
         self.updated_at = datetime.now()
-        models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
