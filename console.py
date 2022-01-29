@@ -11,11 +11,13 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """Simple command processor example."""
     prompt = '(hbnb) '
     class_exi = {'BaseModel', 'User', 'State', 'City',
                  'Amenity', 'Place', 'Review'}
+
     def do_create(self, class_name):
         """Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id"""
@@ -36,14 +38,13 @@ class HBNBCommand(cmd.Cmd):
             obj = Review()
 
         if len(class_name) != 0 and class_name != "":
-            if class_name not in self.class_exi: 
+            if class_name not in self.class_exi:
                 print("** class doesn't exist **")
             else:
                 obj.save()
                 print(obj.id)
         else:
             print("** class name missing **")
-
 
     def do_show(self, args):
         """Prints the string representation of
@@ -62,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
                 all_objs = storage.all()
                 key = class_name + "." + id_n
                 if key in all_objs:
-                    print (all_objs[key])
+                    print(all_objs[key])
                 else:
                     ("** no instance found **")
 
@@ -133,13 +134,14 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """quit command to exit the program"""
         return True
-    
+
     def do_EOF(self, line):
         """EOF command to exit the program"""
         return True
 
     def emptyline(self):
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
