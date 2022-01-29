@@ -6,13 +6,12 @@ from datetime import datetime
 import unittest
 from models.base_model import BaseModel
 """
-Test case for BaseModel
+Test case for base_model
 """
 
 
 class TestBase(unittest.TestCase):
     """Tests for class BaseModel"""
-
     def test_id(self):
         """Test id is str"""
         my_model = BaseModel()
