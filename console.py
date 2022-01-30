@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""import modules"""
+"""Console to test data locally"""
 import cmd
 import json
 from models import storage

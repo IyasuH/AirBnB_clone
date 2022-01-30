@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""import modules"""
+"""contains Base model which defines all common
+attributes/methods for other classes"""
 from datetime import datetime
 import models
 import uuid
