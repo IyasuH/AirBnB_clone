@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-import modules
+BaseModel test
 """
 from datetime import datetime
 import unittest
@@ -16,7 +16,7 @@ class TestBase(unittest.TestCase):
     def test_for_style(self):
         """style test"""
         style = pep8.StyleGuide(quiet=True)
-        chk = style.check_files(['models/base_model.py'])
+        chk = style.check_files(['models/engine/file_storage.py'])
         self.assertEqual(chk.total_errors, 0, "fix pep8")
 
     def test_attributes_type(self):
