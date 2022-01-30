@@ -16,7 +16,12 @@ class BaseModel():
     all common attributes/method for other classes
     """
     def __init__(self, *args, **kwargs):
-        """public instance attributes"""
+        """
+        public instance attributes
+        Args:
+            *args(args): arguments
+            **kwargs(dict): attribute values
+        """
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'updated_at':
@@ -38,14 +43,18 @@ class BaseModel():
                                      self.id, self.__dict__)
 
     def save(self):
-        """update the public instance attribute
-        updated_at with the current datetime"""
+        """
+        update the public instance attribute
+        updated_at with the current datetime
+        """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing all
-        keys/values of __dict__ of the instance"""
+        """
+        Returns a dictionary containing all
+        keys/values of __dict__ of the instance
+        """
         dict_copy = self.__dict__.copy()
         dict_copy['__class__'] = self.__class__.__name__
         dict_copy['updated_at'] = self.updated_at.isoformat()

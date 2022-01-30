@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-To manage files as JSON file
+To manage JSON files
+serializes and deserializes JSON types
 """
 import json
 from models.user import User
@@ -25,12 +26,16 @@ class FileStorage():
     def all(self):
         """
         returns the dictionary __objects
+        which is the dictionary representation
+        of all objects
         """
         return FileStorage.__objects
 
     def new(self, obj):
         """
         sets in __objects the obj with key <obj class name>.id
+        Args :
+             objects(obj): object
         """
         obj_key = type(obj).__name__ + '.' + obj.id
         FileStorage.__objects[obj_key] = obj
@@ -38,6 +43,7 @@ class FileStorage():
     def save(self):
         """
         Serializes __objects to the JSON file (__file_path)
+        __file_path is the path
         """
         json_dict = {}
         for k, v in FileStorage.__objects.items():

@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 """
-import modules
+defines the state class
 """
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """state class"""
+    """
+    To store data about the state
+     """
     name = ""
