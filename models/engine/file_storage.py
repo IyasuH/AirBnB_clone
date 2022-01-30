@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""To manage files as JSON file"""
+"""
+To manage files as JSON file
+"""
 import json
 from models.user import User
 from models.base_model import BaseModel
@@ -13,22 +15,30 @@ import os.path
 
 
 class FileStorage():
-    """To serialize instances to a JSON file and
-    deserializes JSON file to instances"""
+    """
+    To serialize instances to a JSON file and
+    deserializes JSON file to instances
+    """
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """returns the dictionary __objects"""
+        """
+        returns the dictionary __objects
+        """
         return FileStorage.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id"""
+        """
+        sets in __objects the obj with key <obj class name>.id
+        """
         obj_key = type(obj).__name__ + '.' + obj.id
         FileStorage.__objects[obj_key] = obj
 
     def save(self):
-        """Serializes __objects to the JSON file (__file_path)"""
+        """
+        Serializes __objects to the JSON file (__file_path)
+        """
         json_dict = {}
         for k, v in FileStorage.__objects.items():
             json_dict[k] = v.to_dict()
