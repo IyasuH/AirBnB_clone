@@ -5,6 +5,7 @@ import modules
 from datetime import datetime
 import unittest
 from models.base_model import BaseModel
+import pep8
 """
 Test case for base_model
 """
@@ -12,11 +13,18 @@ Test case for base_model
 
 class TestBase(unittest.TestCase):
     """Tests for class BaseModel"""
-    def test_id(self):
+    def test_for_style(self):
+        """style test"""
+        style = pep8.StyleGuide(quiet=True)
+        chk = style.check_files(['models/base_model.py'])
+        self.assertEqual(chk.total_errors, 0, "fix pep8")
+
+    def test_attributes_type(self):
         """Test id is str"""
         my_model = BaseModel()
-        id_type = type(my_model.id)
-        self.assertEqual(id_type, str)
+        self.assertIsInstance(my_model.id, str)
+        self.assertIsInstance(my_model.created_at, datetime)
+        self.assertIsInstance(my_model.updated_at, datetime)
 
     def test_dict(self):
         """Test for instance to dictionary"""
@@ -32,6 +40,18 @@ class TestBase(unittest.TestCase):
         self.assertIn('created_at', my_model_json)
         """Test for Base Model"""
 
+    def test_docstring(self):
+        """checks for docstring"""
+        self.assertIsNotNone(BaseModel.__doc__)
+        self.assertIsNotNone(BaseModel.save.__doc__)
+        self.assertIsNotNone(BaseModel.to_dict.__doc__)
+        
+    def test_attributes(self):
+        """check if attributes exists"""
+        self.assertTrue(hasattr(BaseModel, "__init__"))
+        self.assertTrue(hasattr(BaseModel, "save"))
+        self.assertTrue(hasattr(BaseModel, "to_dict"))
+        
     def test_baseModel_dict(self):
         """Test the re-crated instsnace with the dictionary"""
         my_model = BaseModel()
@@ -51,6 +71,6 @@ class TestBase(unittest.TestCase):
         updated_type = type(my_new_model.updated_at)
         self.assertEqual(updated_type, datetime)
 
-
+ 
 if __name__ == '__main__':
     unittest.main()
