@@ -71,6 +71,10 @@ class TestBase(unittest.TestCase):
         updated_type = type(my_new_model.updated_at)
         self.assertEqual(updated_type, datetime)
 
+    def test_datetime(self):
+        """
+        Tests for correct datetime format
+        """
 
 if __name__ == '__main__':
     unittest.main()
