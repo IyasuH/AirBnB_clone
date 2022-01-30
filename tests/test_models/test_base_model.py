@@ -17,8 +17,7 @@ class TestBase(unittest.TestCase):
         """style test"""
         style = pep8.StyleGuide(quiet=True)
         chk = style.check_files(['models/base_model.py'])
-        self.assertTrue(chk is style.check_files(['models/engine/file_storage.py']))
-#        self.assertEqual(chk.total_errors, 0, "fix pep8")
+        self.assertEqual(chk.total_errors, 0, "fix pep8")
 
     def test_attributes_type(self):
         """Test id is str"""
