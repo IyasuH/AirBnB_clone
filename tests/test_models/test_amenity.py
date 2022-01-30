@@ -6,6 +6,7 @@ from models.amenity import Amenity
 import unittest
 import pep8
 
+
 class Test(unittest.TestCase):
     def test_for_style(self):
         """style test"""
@@ -24,5 +25,6 @@ class Test(unittest.TestCase):
         self.assertIsInstance(my_model.created_at, datetime)
         self.assertIsInstance(my_model.updated_at, datetime)
 
-if __name__== '__main__':
+
+if __name__ == '__main__':
     unittest.main()

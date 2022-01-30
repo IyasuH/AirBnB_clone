@@ -45,13 +45,13 @@ class TestBase(unittest.TestCase):
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.save.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
-        
+
     def test_attributes(self):
         """check if attributes exists"""
         self.assertTrue(hasattr(BaseModel, "__init__"))
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
-        
+
     def test_baseModel_dict(self):
         """Test the re-crated instsnace with the dictionary"""
         my_model = BaseModel()
@@ -71,6 +71,6 @@ class TestBase(unittest.TestCase):
         updated_type = type(my_new_model.updated_at)
         self.assertEqual(updated_type, datetime)
 
- 
+
 if __name__ == '__main__':
     unittest.main()

@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 from datetime import datetime
 import pep8
 
+
 class Test(unittest.TestCase):
     def test_for_style(self):
         """style test"""

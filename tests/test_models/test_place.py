@@ -6,6 +6,7 @@ import unittest
 import pep8
 from datetime import datetime
 
+
 class Test(unittest.TestCase):
     def test_for_style(self):
         """style test"""
