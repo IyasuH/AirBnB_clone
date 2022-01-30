@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-"""contains Base model which defines all common
-attributes/methods for other classes"""
+"""
+contains Base model which defines all common
+attributes/methods for other classes
+"""
 from datetime import datetime
 import models
 import uuid
@@ -8,7 +10,11 @@ import uuid
 
 
 class BaseModel():
-    """Baseclass"""
+    """
+    Baseclass
+    base for all the classes in the which defines
+    all common attributes/method for other classes
+    """
     def __init__(self, *args, **kwargs):
         """public instance attributes"""
         if kwargs:
