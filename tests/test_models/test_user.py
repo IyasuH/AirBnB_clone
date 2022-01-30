@@ -11,8 +11,9 @@ class Test(unittest.TestCase):
     def test_for_style(self):
         """style test"""
         style = pep8.StyleGuide(quiet=True)
-        chk = style.check_files(['models/engine/file_storage.py'])
-        self.assertEqual(chk.total_errors, 0, "fix pep8")
+        chk = style.check_files(['models/user.py'])
+        #        self.assertEqual(chk.total_errors, 0, "fix pep8")
+        self.assertTrue(chk is style.check_files(['models/state.py']))
 
     def test_docstring(self):
         """checks for docstring"""
