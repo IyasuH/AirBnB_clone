@@ -52,13 +52,18 @@ class TestBase(unittest.TestCase):
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
 
+    def test_errs(self):
+        """for specifi base methods"""
+        base_model= BaseModel()
+        with self.assertRaises(TypeError):
+            base_model.save("kwarg")
+            print(base_model.save)
+
     def test_save(self):
-        """check savefunction of basemodel"""
+        """test for method save"""
         my_model = BaseModel()
         my_model.save()
         self.assertNotEqual(my_model.created_at, my_model.updated_at)
-        with self.assertRaises(TypeError):
-            my_model.save(" ")
 
     def test_baseModel_dict(self):
         """Test the re-crated instsnace with the dictionary"""
