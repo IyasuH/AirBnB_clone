@@ -52,6 +52,12 @@ class TestBase(unittest.TestCase):
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
 
+    def test_save(self):
+        """check savefunction of basemodel"""
+        my_model = BaseModel()
+        my_model.save()
+        self.assertNotEqual(my_model.created_at, my_model.updated_at)
+
     def test_baseModel_dict(self):
         """Test the re-crated instsnace with the dictionary"""
         my_model = BaseModel()
