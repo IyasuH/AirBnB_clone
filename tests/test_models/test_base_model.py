@@ -57,6 +57,8 @@ class TestBase(unittest.TestCase):
         my_model = BaseModel()
         my_model.save()
         self.assertNotEqual(my_model.created_at, my_model.updated_at)
+        with self.assertRaises(TypeError):
+            my_model.save(" ")
 
     def test_baseModel_dict(self):
         """Test the re-crated instsnace with the dictionary"""

@@ -32,6 +32,19 @@ class TestFileStorage(unittest.TestCase):
         models.storage.save()
         self.assertEqual(os.path.exists('file.json'), True)
 
+    def test_errs(self):
+        """Test FileStorage methods"""
+        base_model = BaseModel()
+        with self.assertRaises(AttributeError):
+            FileStorage.__objects
+            FileStorage.__File_path
+
+        with self.assertRaises(TypeError):
+            models.storage.new()
+            models.storage.new(self, base_model)
+            models.save(base_model)
+            models.reload(base_model)
+            models.all(base_model)
 
 if __name__ == '__main__':
     unittest.main()
